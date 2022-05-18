@@ -14,4 +14,4 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/lib)
 include_directories(${ABSEIL_ROOT})
 add_library(absl::base SHARED IMPORTED)
 
-install(TARGETS einsum_bit_cast)
+add_executable(test lib/kernels.cpp)

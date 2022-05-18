@@ -76,10 +76,5 @@ setup(
     description = (
         "test c++ bit_cast"
     ),
-    packages = find_packages("src"),
-    package_dir = {"": "src"},
-    include_package_data = True,
-    install_requires = ["jax", "jaxlib"],
-    extras_require = {"test": "pytest"},
     cmdclass = {"build_ext": CMakeBuildExt},
 )

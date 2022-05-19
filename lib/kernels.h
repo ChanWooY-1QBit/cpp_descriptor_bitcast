@@ -1,6 +1,6 @@
 namespace einsum {
     struct EinsumDescriptor {
-        char *subscripts:
+        char *subscripts;
         int *tensor_shape;
     };
 }

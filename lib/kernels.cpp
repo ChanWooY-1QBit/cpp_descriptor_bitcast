@@ -4,8 +4,9 @@
 #include <iostream>
 
 int main() {
+	int shape[2] = {32, 30};
     einsum::EinsumDescriptor descriptor = {
-        "ab,b->c", (int[]){32,30}
+        "ab,b->c", shape
     };
     std::cout << "before desc subs: " << descriptor.subscripts << "\n";
     std::cout << "before desc shape: " << descriptor.tensor_shape[0] << "\n";

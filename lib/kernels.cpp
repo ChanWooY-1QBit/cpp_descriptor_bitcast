@@ -12,7 +12,7 @@ int main() {
 
     pybind11::bytes opaque = einsum::PackDescriptor(descriptor);
 
-    const einsum::EinsumDescriptor &convDescriptor = *einsum::UnpackDescriptor<CutensorEinsumDescriptor>(opaque, sizeof(opaque));
+    const einsum::EinsumDescriptor &convDescriptor = *einsum::UnpackDescriptor<einsum::CutensorEinsumDescriptor>(opaque, sizeof(opaque));
     std::cout << "conv desc subs: " << convDescriptor.subscripts << "\n";
     std::cout << "conv desc shape: " << convDescriptor.tensor_shape[0] << "\n";
 }

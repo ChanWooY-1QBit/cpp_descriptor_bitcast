@@ -21,9 +21,9 @@ namespace einsum {
     }
 
     template <typename T>
-    std::byte PackDescriptor(const T& descriptor) {
+    std::string PackDescriptor(const T& descriptor) {
         std::cout << "pybind_helper desc: " << descriptor.subscripts << "\n";
-        return std::byte(PackDescriptorAsString(descriptor));
+        return PackDescriptorAsString(descriptor);
     }
 
     template <typename T>

@@ -4,17 +4,21 @@
 #include <iostream>
 
 int main() {
-	int shape[2] = {32, 30};
+    std::cout <<"before init\n";
+    int shape[2] = {32, 30};
+    char *subs = "ab,b->c";
     einsum::EinsumDescriptor descriptor = {
-        "ab,b->c", shape
+        subs, shape
     };
     std::cout << "before desc subs: " << descriptor.subscripts << "\n";
     std::cout << "before desc shape: " << descriptor.tensor_shape[0] << "\n";
 
-    // pybind11::bytes opaque = einsum::PackDescriptor(descriptor);
-    std::byte opaque = einsum::PackDescriptor(descriptor);
+    std::string opaque_str = einsum::PackDescriptor(descriptor);
+    //const char *opaque = reinterpret_cast<const char*> (opaque_byte);
+    const char* opaque = opaque_str.c_str();
 
-    const einsum::EinsumDescriptor &convDescriptor = *einsum::UnpackDescriptor<einsum::EinsumDescriptor>(opaque, sizeof(opaque));
+    const einsum::EinsumDescriptor &convDescriptor = *einsum::UnpackDescriptor<einsum::EinsumDescriptor>(opaque, sizeof(opaque_str));
     std::cout << "conv desc subs: " << convDescriptor.subscripts << "\n";
     std::cout << "conv desc shape: " << convDescriptor.tensor_shape[0] << "\n";
+    return 0;
 }

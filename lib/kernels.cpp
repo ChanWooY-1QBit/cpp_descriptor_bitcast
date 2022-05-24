@@ -17,7 +17,7 @@ int main() {
     //const char *opaque = reinterpret_cast<const char*> (opaque_byte);
     const char* opaque = opaque_str.c_str();
 
-    const einsum::EinsumDescriptor &convDescriptor = *einsum::UnpackDescriptor<einsum::EinsumDescriptor>(opaque, sizeof(opaque_str));
+    const einsum::EinsumDescriptor &convDescriptor = *einsum::UnpackDescriptor<einsum::EinsumDescriptor>(opaque, sizeof(einsum::EinsumDescriptor));
     std::cout << "conv desc subs: " << convDescriptor.subscripts << "\n";
     std::cout << "conv desc shape: " << convDescriptor.tensor_shape[0] << "\n";
     return 0;
